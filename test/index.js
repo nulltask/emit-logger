@@ -35,7 +35,7 @@ describe('emit-logger', function() {
     it('#remove(emitter2)', function() {
       logger.once('remove', function(emitter) {
         assert(emitter2 === emitter);
-        assert(1 == logger._emitters.length);
+        assert(1 === logger._emitters.length);
         assert(emitter1 === logger._emitters[0]);
       });
       logger.remove(emitter2);
