@@ -48,11 +48,14 @@ EmitLogger.prototype.add = function(emitter) {
     return emit.apply(emitter, arguments);
   };
 
-  this.once('remove', function(removedEmitter) {
+  this.on('remove', onremove);
+
+  function onremove(removedEmitter) {
     if (emitter !== removedEmitter) return;
     removedEmitter.emit = emit;
-  });
-
+    self.removeListener('remove', onremove);
+  }
+  
   this._emitters.push(emitter);
   this.emit('add', emitter);
   
@@ -73,6 +76,6 @@ EmitLogger.prototype.remove = function(emitter) {
   if (previous !== this._emitters.length) {
     this.emit('remove', emitter);
   }
-  
+
   return this;
 };
