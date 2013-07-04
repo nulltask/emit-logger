@@ -47,7 +47,12 @@ EmitLogger.prototype.add = function(emitter) {
     self._store.add(emitter, args);
     return emit.apply(emitter, arguments);
   };
-  
+
+  this.once('remove', function(removedEmitter) {
+    if (emitter !== removedEmitter) return;
+    removedEmitter.emit = emit;
+  });
+
   this._emitters.push(emitter);
   this.emit('add', emitter);
   
@@ -62,7 +67,7 @@ EmitLogger.prototype.remove = function(emitter) {
   var previous = this._emitters.length;
   
   this._emitters = this._emitters.filter(function(e) {
-    return e == emitter;
+    return e !== emitter;
   });
   
   if (previous !== this._emitters.length) {

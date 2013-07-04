@@ -39,6 +39,7 @@ describe('emit-logger', function() {
         }
       };
       emitter1.emit('foo', 'hello', 'world');
+      emitter2.emit('foo', 'hello', 'world');
     });
   });
 });
