@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -31,8 +30,20 @@ EmitLogger.__proto__ = Emitter.prototype;
  */
 
 EmitLogger.add = function(emitter) {
+  
+  if (!emitter.emit) return this;
+  
+  var emit = emitter.emit;
+  
+  emitter.emit = function() {
+    var args = [].slice.call(arguments);
+    store.add(emitter, args);
+    return emit.apply(emitter, arguments);
+  };
+  
   this._emitters.push(emitter);
   this.emit('add', emitter);
+  
   return this;
 };
 
