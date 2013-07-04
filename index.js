@@ -40,11 +40,12 @@ EmitLogger.prototype.add = function(emitter) {
   if (!(emitter instanceof Emitter)) return this;
   
   var self = this;
-  
+  var emit = emitter.emit;
+
   emitter.emit = function() {
     var args = [].slice.call(arguments);
     self._store.add(emitter, args);
-    return Emitter.prototype.emit.apply(emitter, arguments);
+    return emit.apply(emitter, arguments);
   };
   
   this._emitters.push(emitter);
