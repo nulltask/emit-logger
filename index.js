@@ -3,6 +3,7 @@
  */
 
 var Emitter = require('events').EventEmitter;
+var Store = require('./lib/store');
 
 /**
  * Expose `EmitLogger`. 
@@ -11,34 +12,39 @@ var Emitter = require('events').EventEmitter;
 module.exports = EmitLogger;
 
 /**
+ * Expose `Store`.
+ */
+
+EmitLogger.Store = Store;
+
+/**
  * @params {Store} store
  */
 
 function EmitLogger(store) {
-  this.store = store;
   this._emitters = [];
+  this._store = store || new Store();
 }
 
 /**
  * Inherits from `EventEmitter`
  */
 
-EmitLogger.__proto__ = Emitter.prototype;
+EmitLogger.prototype.__proto__ = Emitter.prototype;
 
 /**
  * @param {EventEmitter} emitter
  */
 
-EmitLogger.add = function(emitter) {
+EmitLogger.prototype.add = function(emitter) {
+  if (!(emitter instanceof Emitter)) return this;
   
-  if (!emitter.emit) return this;
-  
-  var emit = emitter.emit;
+  var self = this;
   
   emitter.emit = function() {
     var args = [].slice.call(arguments);
-    this.store.add(emitter, args);
-    return emit.apply(emitter, args);
+    self._store.add(emitter, args);
+    return Emitter.prototype.emit.apply(emitter, arguments);
   };
   
   this._emitters.push(emitter);
@@ -51,10 +57,10 @@ EmitLogger.add = function(emitter) {
  * @param {EventEmitter} emitter
  */
 
-EmitLogger.remove = function(emitter) {
+EmitLogger.prototype.remove = function(emitter) {
   var previous = this._emitters.length;
   
-  this._emitters.filter(function(e) {
+  this._emitters = this._emitters.filter(function(e) {
     return e == emitter;
   });
   

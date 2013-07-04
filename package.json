@@ -1,0 +1,13 @@
+{
+  "name": "emit-logger",
+  "version": "0.0.0",
+  "description": "event logger for EventEmitter",
+  "contributors": [
+    { "name": "Seiya Konno", "email": "nulltask@gmail.com" }
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
