@@ -1,5 +1,5 @@
 
-var assert = require('assert');
+var assert = require('better-assert');
 var Emitter = require('events').EventEmitter;
 
 describe('emit-logger', function() {

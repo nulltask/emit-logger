@@ -9,6 +9,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "better-assert": "*"
   }
 }
