@@ -38,7 +38,7 @@ EmitLogger.add = function(emitter) {
   emitter.emit = function() {
     var args = [].slice.call(arguments);
     store.add(emitter, args);
-    return emit.apply(emitter, arguments);
+    return emit.apply(emitter, args);
   };
   
   this._emitters.push(emitter);
