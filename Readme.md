@@ -15,7 +15,7 @@ Example:
 
 ```js
 var Emitter = require('events').EventEmitter;
-var EmitLogger = require('./');
+var EmitLogger = require('emit-logger');
 var logger = new EmitLogger();
 
 var emitter1 = new Emitter();
