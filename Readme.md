@@ -42,6 +42,8 @@ setInterval(function() {
 }, 500);
 ```
 
+![screenshot](http://i.cloudup.com/5P1-B0YT9o.png)
+
 ## License
 
 The MIT License
