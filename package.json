@@ -2,6 +2,7 @@
   "name": "emit-logger",
   "version": "0.0.1",
   "description": "event logger for EventEmitter",
+  "keywords": ["EventEmitter", "event", "log", "logging", "logger"],
   "contributors": [
     { "name": "Seiya Konno", "email": "nulltask@gmail.com" }
   ],
