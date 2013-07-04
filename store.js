@@ -1,4 +1,3 @@
-
 /**
  * Expose `Store`.
  */
