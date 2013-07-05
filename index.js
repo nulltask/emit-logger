@@ -1,3 +1,4 @@
+
 /**
  * Module dependencies.
  */
@@ -37,10 +38,12 @@ EmitLogger.prototype.__proto__ = Emitter.prototype;
  */
 
 EmitLogger.prototype.add = function(emitter) {
-  if (!(emitter instanceof Emitter)) return this;
-  
   var self = this;
   var emit = emitter.emit;
+
+  if ('function' !== typeof emit) {
+    throw new TypeError('EventEmitter instance required.');
+  }
 
   emitter.emit = function() {
     var args = [].slice.call(arguments);
