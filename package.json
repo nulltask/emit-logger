@@ -1,6 +1,6 @@
 {
   "name": "emit-logger",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "event logger for EventEmitter",
   "keywords": ["EventEmitter", "event", "log", "logging", "logger"],
   "contributors": [
