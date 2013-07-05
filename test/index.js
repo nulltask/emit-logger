@@ -10,6 +10,17 @@ describe('emit-logger', function() {
     assert('EmitLogger' === EmitLogger.name);
   });
 
+  describe('Store', function() {
+    it('should expose Store constructor', function() {
+      assert('function' === typeof EmitLogger.Store);
+      assert('Store' === EmitLogger.Store.name);
+    });
+
+    it('#add()', function() {
+      assert('function' === typeof EmitLogger.Store.prototype.add);
+    });
+  });
+
   describe('EmitLogger', function() {
     var logger = new EmitLogger();
     
