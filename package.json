@@ -1,12 +1,24 @@
 {
   "name": "emit-logger",
+  "main": "index.js",
   "version": "0.1.0",
   "description": "event logger for EventEmitter",
-  "keywords": ["EventEmitter", "event", "log", "logging", "logger"],
+  "keywords": [
+    "EventEmitter",
+    "event",
+    "log",
+    "logging",
+    "logger"
+  ],
   "contributors": [
-    { "name": "Seiya Konno", "email": "nulltask@gmail.com" }
+    {
+      "name": "Seiya Konno",
+      "email": "nulltask@gmail.com"
+    }
   ],
   "dependencies": {
+    "chalk": "^1.1.1",
+    "moment": "^2.10.6"
   },
   "devDependencies": {
     "mocha": "*",
