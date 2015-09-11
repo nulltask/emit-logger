@@ -37,7 +37,8 @@ EmitLogger.prototype.__proto__ = Emitter.prototype;
  * @param {EventEmitter} emitter
  */
 
-EmitLogger.prototype.add = function(emitter) {
+EmitLogger.prototype.add = function(emitter, _options) {
+  var options = _options || {};
   var self = this;
   var emit = emitter.emit;
 
@@ -47,7 +48,7 @@ EmitLogger.prototype.add = function(emitter) {
 
   emitter.emit = function() {
     var args = [].slice.call(arguments);
-    self._store.add(emitter, args);
+    self._store.add(emitter, args, options);
     return emit.apply(emitter, arguments);
   };
 
